@@ -1,7 +1,17 @@
-#include "SDL/include/SDL.h"
-#pragma comment ( lib, "SDL/x86/SDL2.lib")
-#pragma comment ( lib, "SDL/x86/SDL2main.lib")
+#include "Game.h"
 
-int main(void) {
+int main(int argc, char* args[])
+{
+	Game game;
+	if (!game.Init()) return -1;
+
+	bool end = false;
+	while (!end)
+	{
+		end = game.Update();
+		game.Draw();
+	}
+
+	game.Release();
 	return 0;
 }
